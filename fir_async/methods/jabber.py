@@ -1,12 +1,21 @@
 import markdown2
 from django.conf import settings
 
-import xmpp
+import xmpppy as xmpp
 from django import forms
 
 from fir_async.methods import NotificationMethod, request
 from fir_plugins.links import registry as link_registry
 from django.utils.translation import ugettext_lazy as _
+
+
+class Client(xmpp.Client):
+    def __init__(self, *args, **kwargs):
+        kwargs['debug'] = []
+        xmpp.Client.__init__(self, *args, **kwargs)
+
+    def DisconnectHandler(self):
+        pass
 
 
 class XmppMethod(NotificationMethod):
@@ -34,17 +43,18 @@ class XmppMethod(NotificationMethod):
         if self.server is not None:
             self.connection_tuple = (self.server, self.port)
             self.use_srv = False
-        self.client = xmpp.Client(self.jid.getDomain(), debug=[])
-        # secure=0: xmpppy bug in certificate parsing
-        if not self.client.connect(server=self.connection_tuple, use_srv=self.use_srv, secure=0):
+        self.client = Client(self.jid.getDomain())
+        if not self.client.connect(server=self.connection_tuple, use_srv=self.use_srv):
             self.server_configured = False
             return
         if not self.client.auth(self.jid.getNode(), self.password, resource=self.jid.getResource()):
             self.server_configured = False
             return
+        self.client.disconnected()
         self.server_configured = True
 
     def send(self, event, users, instance, paths):
+        self.client.reconnectAndReauth()
         for user, templates in users.items():
             jid = self._get_jid(user)
             if not self.enabled(event, user, paths) or jid is None:
@@ -63,7 +73,9 @@ class XmppMethod(NotificationMethod):
                                                                                        safe_mode=True) + u"</body>"
             html.addChild(node=xmpp.simplexml.XML2Node(text.encode('utf-8')))
             message.addChild(node=html)
+
             self.client.send(message)
+        self.client.disconnected()
 
     def _get_jid(self, user):
         config = self._get_configuration(user)
