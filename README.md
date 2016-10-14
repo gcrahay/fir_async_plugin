@@ -16,7 +16,7 @@ This plugins allows you to launch asynchronous tasks with Celery and send notifi
 You should install it in the FIR _virtualenv_. 
 
 ```bash
-(your_env)$ git clone https://github.com/gcrahay/fir_async_plugin.git
+(your_env)$ git clone --recursive https://github.com/gcrahay/fir_async_plugin.git
 (your_env)$ cd fir_async_plugin
 (your_env)$ python setup.py install
 
@@ -89,12 +89,6 @@ ASYNC_EMAIL_REPLY_TO = None
 To send signed/encrypted email notifications with S/MIME to users, install and configure [django-djembe](https://github.com/cabincode/django-djembe) and add it in your *installed_apps.txt*.
 
 ## Jabber (XMPP) notifications
-
-Install `xmpppy` library:
-
-```bash
-(your_env)$ pip install xmpppy
-```
 
 Configure `fir_async`:
 
