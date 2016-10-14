@@ -1,0 +1,27 @@
+{% load i18n %}
+{% load add_css_class %}
+{% load notifications %}
+    <form action="{% url 'async:preferences' %}" method="post">
+        {% csrf_token %}
+        <div class="col-sm-11">
+            <fieldset>
+                <legend>{% trans "Notification preferences" %}</legend>
+                {{ formset.management_form }}
+                {% for form in formset %}
+                <div class="col-sm-3">
+                    <div class="form-group">
+                   <label id="id_business_lines">{{ form.get_notification_display }}</label>
+                        {{ form.business_lines|add_css_class:"form-control" }}
+                        {% for hidden in form.hidden_fields %}
+                            {{ hidden }}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </fieldset>
+         </div>
+         <div class="col-sm-1">
+             <button class="btn btn-primary" type="submit">{% trans "Save" %}</button>
+        </div>
+    </form>
+{% notification_forms %}
