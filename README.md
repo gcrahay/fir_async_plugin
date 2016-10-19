@@ -63,7 +63,7 @@ Plugin notifications:
 
 ## Celery
 
-In your `dev/production.py` settings file, configure Celery parameters (CELERY_*).
+In your `dev/production.py` settings file, configure Celery parameters (CELERY_*). Follow the [official documentation](http://docs.celeryproject.org).
 
 ## Full URL in notification links
 
