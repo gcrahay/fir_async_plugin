@@ -103,6 +103,8 @@ ASYNC_XMPP_SERVER = 'localhost'
 ASYNC_XMPP_PORT = 5222
 ```
 
+**NB:** `fir_async` comes with `xmpppy` library as a git submodule from [Archipel project](https://github.com/ArchipelProject/xmpppy).
+
 ## Templates
 
 You have to create notification templates in the Django admin site.
