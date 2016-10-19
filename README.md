@@ -52,7 +52,7 @@ Users can subscribe to notifications via their profile page.
 
 Core FIR notifications:
 * 'event:created': new event/incident
-* 'event:updated': update of an event/inicdent
+* 'event:updated': update of an event/incident
 
 Plugin notifications:
 * [fir_actions](https://github.com/gcrahay/fir_actions_plugin):
