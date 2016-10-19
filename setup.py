@@ -25,6 +25,10 @@ setup(
         'django>=1.9',
         'celery'
     ],
+    extras_require={
+        'redis': ['redis', ],
+        'smime': ['django-djembe', ],
+    },
     license="GPL v3, see LICENSE",
     zip_safe=False,
     keywords='FIR',
