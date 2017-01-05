@@ -9,8 +9,6 @@ This plugins allows you to launch asynchronous tasks with Celery and send notifi
 
 # Installation
 
-!! `fir_async` needs FIR pull requests certsocietegenerale/FIR#127 and certsocietegenerale/FIR#131 .
-
 ## Details
 
 You should install it in the FIR _virtualenv_. 

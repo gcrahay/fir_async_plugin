@@ -1,11 +1,14 @@
 {% load i18n %}
 {% load add_css_class %}
 {% load notifications %}
-    <form action="{% url 'async:preferences' %}" method="post">
-        {% csrf_token %}
-        <div class="col-sm-11">
-            <fieldset>
-                <legend>{% trans "Notification preferences" %}</legend>
+<div class="col-sm-8 col-sm-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{% trans "Notification preferences" %}</h3>
+      </div>
+      <div class="panel-body">
+          <form action="{% url 'async:preferences' %}" method="post">
+                {% csrf_token %}
                 {{ formset.management_form }}
                 {% for form in formset %}
                 <div class="col-sm-3">
@@ -18,10 +21,9 @@
                     </div>
                 </div>
                 {% endfor %}
-            </fieldset>
-         </div>
-         <div class="col-sm-1">
-             <button class="btn btn-primary" type="submit">{% trans "Save" %}</button>
-        </div>
-    </form>
+                <button class="btn btn-primary" type="submit">{% trans "Save" %}</button>
+            </form>
+      </div>
+  </div>
+</div>
 {% notification_forms %}
