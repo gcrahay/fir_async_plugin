@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-13 18:00+0200\n"
+"POT-Creation-Date: 2017-01-06 15:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,99 +18,111 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: fir_async/forms.py:73 fir_async/templatetags/notifications.py:14
+#: forms.py:77
 #, python-format
 msgid "Configure %(method)s"
 msgstr "Configuration %(method)s"
 
-#: fir_async/methods/jabber.py:18
+#: methods/email.py:25
+msgid "Encryption certificate in PEM format."
+msgstr ""
+
+#: methods/jabber.py:27
 msgid "Jabber ID"
 msgstr "ID Jabber"
 
-#: fir_async/models.py:14 fir_async/models.py:48
+#: models.py:13 models.py:38
 msgid "user"
 msgstr "utilisateur"
 
-#: fir_async/models.py:15 fir_async/models.py:50
+#: models.py:14 models.py:40
 msgid "method"
 msgstr "méthode"
 
-#: fir_async/models.py:16
+#: models.py:15
 msgid "configuration"
 msgstr ""
 
-#: fir_async/models.py:19
-#, python-format
-msgid "%(method)s configuration for %(user)s"
-msgstr "configuration %(method)s pour %(user)s"
-
-#: fir_async/models.py:23
+#: models.py:18
 msgid "method configuration"
 msgstr "configuration de méthode"
 
-#: fir_async/models.py:24
+#: models.py:19
 msgid "method configurations"
 msgstr "configurations de méthode"
 
-#: fir_async/models.py:31 fir_async/models.py:49
+#: models.py:25 models.py:39
 msgid "event"
 msgstr "événement"
 
-#: fir_async/models.py:33
+#: models.py:27
 msgid "business line"
 msgstr "partie prenante"
 
-#: fir_async/models.py:34
+#: models.py:28
 msgid "subject"
 msgstr "objet"
 
-#: fir_async/models.py:35
+#: models.py:29
 msgid "short description"
 msgstr "description courte"
 
-#: fir_async/models.py:36
+#: models.py:30
 msgid "description"
 msgstr "description"
 
-#: fir_async/models.py:39
-#, python-format
-msgid "Template for '%(event)s'"
-msgstr "Gabarit pour '%(event)s'"
-
-#: fir_async/models.py:42
+#: models.py:33
 msgid "notification template"
 msgstr "gabarit de notification"
 
-#: fir_async/models.py:43
+#: models.py:34
 msgid "notification templates"
 msgstr "gabarits de notification"
 
-#: fir_async/models.py:52
+#: models.py:42
 msgid "business lines"
 msgstr "parties prenante"
 
-#: fir_async/models.py:55
-#, python-format
-msgid "%(user)s %(method)s preferences for '%(event)s'"
-msgstr "préférences %(method)s de %(user)s pour '%(event)s'"
-
-#: fir_async/models.py:60
+#: models.py:45
 msgid "notification preference"
 msgstr "préférence de notification"
 
-#: fir_async/models.py:61
+#: models.py:46
 msgid "notification preferences"
 msgstr "préférences de notification"
 
-#: fir_async/templates/fir_async/actions_form.html:35
+#: models.py:51
+msgid "Event created"
+msgstr ""
+
+#: models.py:56
+msgid "Event updated"
+msgstr ""
+
+#: templates/fir_async/actions.html:3
+#,  python-format
+#| msgid "Configure %(method)s"
+msgid "Configure %(method_name)s"
+msgstr "Configurer %(method_name)s"
+
+#: templates/fir_async/actions_form.html:38
 msgid "Cancel"
 msgstr "Annuler"
 
-#: fir_async/templates/fir_async/actions_form.html:36
-#: fir_async/templates/fir_async/preferences.html:24
+#: templates/fir_async/actions_form.html:39
+#: templates/fir_async/preferences.html:24
 msgid "Save"
 msgstr "Enregistrer"
 
-#: fir_async/templates/fir_async/preferences.html:8
+#: templates/fir_async/preferences.html:7
 msgid "Notification preferences"
 msgstr "Préférences de notification"
+
+#~ msgid "%(method)s configuration for %(user)s"
+#~ msgstr "configuration %(method)s pour %(user)s"
+
+#~ msgid "Template for '%(event)s'"
+#~ msgstr "Gabarit pour '%(event)s'"
+
+#~ msgid "%(user)s %(method)s preferences for '%(event)s'"
+#~ msgstr "préférences %(method)s de %(user)s pour '%(event)s'"

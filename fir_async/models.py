@@ -48,12 +48,12 @@ class NotificationPreference(models.Model):
         index_together = ["user", "event", "method"]
 
 
-@async_event('event:created', model_created, Incident, verbose_name='Event created')
+@async_event('event:created', model_created, Incident, verbose_name=_('Event created'))
 def incident_created(sender, instance, **kwargs):
     return instance, instance.concerned_business_lines, None
 
 
-@async_event('event:updated', model_updated, Incident, verbose_name='Event updated')
+@async_event('event:updated', model_updated, Incident, verbose_name=_('Event updated'))
 def incident_created(sender, instance, **kwargs):
     return instance, instance.concerned_business_lines, None
 

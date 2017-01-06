@@ -11,7 +11,7 @@ def notification_actions():
     actions = {}
     for method_name, method_object in registry.methods.items():
         if len(method_object.options):
-            actions[method_name] = _("Configure %(method)s" % {'method': method_object.verbose_name})
+            actions[method_name] = method_object.verbose_name
     return {'actions': actions}
 
 
