@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-06 15:49+0100\n"
+"POT-Creation-Date: 2017-01-06 16:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: admin.py:27
+msgctxt "business lines"
+msgid "All"
+msgstr "Toutes"
+
+#: admin.py:28
+#| msgid "business lines"
+msgid "Business lines"
+msgstr "parties prenantes"
 
 #: forms.py:77
 #, python-format
@@ -31,77 +41,80 @@ msgstr ""
 msgid "Jabber ID"
 msgstr "ID Jabber"
 
-#: models.py:13 models.py:38
+#: models.py:14 models.py:43
 msgid "user"
 msgstr "utilisateur"
 
-#: models.py:14 models.py:40
+#: models.py:15 models.py:45
 msgid "method"
 msgstr "méthode"
 
-#: models.py:15
+#: models.py:16
 msgid "configuration"
 msgstr ""
 
-#: models.py:18
+#: models.py:19
+#, python-brace-format
+#| msgid "method configuration"
+msgid "{user}: {method} configuration"
+msgstr "{user} : configuration de {method}"
+
+#: models.py:22
 msgid "method configuration"
 msgstr "configuration de méthode"
 
-#: models.py:19
+#: models.py:23
 msgid "method configurations"
 msgstr "configurations de méthode"
 
-#: models.py:25 models.py:39
+#: models.py:29 models.py:44
 msgid "event"
 msgstr "événement"
 
-#: models.py:27
+#: models.py:31
 msgid "business line"
 msgstr "partie prenante"
 
-#: models.py:28
+#: models.py:32
 msgid "subject"
 msgstr "objet"
 
-#: models.py:29
+#: models.py:33
 msgid "short description"
 msgstr "description courte"
 
-#: models.py:30
+#: models.py:34
 msgid "description"
 msgstr "description"
 
-#: models.py:33
+#: models.py:37
 msgid "notification template"
 msgstr "gabarit de notification"
 
-#: models.py:34
+#: models.py:38
 msgid "notification templates"
 msgstr "gabarits de notification"
 
-#: models.py:42
+#: models.py:47
 msgid "business lines"
 msgstr "parties prenante"
 
-#: models.py:45
+#: models.py:50
+#, python-brace-format
+#| msgid "notification preference"
+msgid "{user}: {event} notification preference for {method}"
+msgstr "{user} : préférence de notification de {method}"
+
+#: models.py:55
 msgid "notification preference"
 msgstr "préférence de notification"
 
-#: models.py:46
+#: models.py:56
 msgid "notification preferences"
 msgstr "préférences de notification"
 
-#: models.py:51
-msgid "Event created"
-msgstr ""
-
-#: models.py:56
-msgid "Event updated"
-msgstr ""
-
 #: templates/fir_async/actions.html:3
-#,  python-format
-#| msgid "Configure %(method)s"
+#, python-format
 msgid "Configure %(method_name)s"
 msgstr "Configurer %(method_name)s"
 
