@@ -9,10 +9,14 @@ from incidents.models import model_created, Incident, model_updated
 from fir_async.registry import registry, async_event
 
 
+@python_2_unicode_compatible
 class MethodConfiguration(models.Model):
     user = models.ForeignKey('auth.User', related_name='method_preferences', verbose_name=_('user'))
     key = models.CharField(max_length=60, choices=registry.get_method_choices(), verbose_name=_('method'))
     value = models.TextField(verbose_name=_('configuration'))
+
+    def __str__(self):
+        return "{user}: {method} configuration".format(user=self.user, method=self.key)
 
     class Meta:
         verbose_name = _('method configuration')
@@ -34,12 +38,18 @@ class NotificationTemplate(models.Model):
         verbose_name_plural = _('notification templates')
 
 
+@python_2_unicode_compatible
 class NotificationPreference(models.Model):
     user = models.ForeignKey('auth.User', related_name='notification_preferences', verbose_name=_('user'))
     event = models.CharField(max_length=60, verbose_name=_('event'))
     method = models.CharField(max_length=60, verbose_name=_('method'))
     business_lines = models.ManyToManyField('incidents.BusinessLine', related_name='+', blank=True,
                                             verbose_name=_('business lines'))
+
+    def __str__(self):
+        return "{user}: {event} notification preference for {method}".format(user=self.user,
+                                                                               event=self.event,
+                                                                               method=self.method)
 
     class Meta:
         verbose_name = _('notification preference')
@@ -48,12 +58,12 @@ class NotificationPreference(models.Model):
         index_together = ["user", "event", "method"]
 
 
-@async_event('event:created', model_created, Incident, verbose_name=_('Event created'))
+@async_event('event:created', model_created, Incident, verbose_name='Event created')
 def incident_created(sender, instance, **kwargs):
-    return instance, instance.concerned_business_lines, None
+    return instance, instance.concerned_business_lines
 
 
-@async_event('event:updated', model_updated, Incident, verbose_name=_('Event updated'))
+@async_event('event:updated', model_updated, Incident, verbose_name='Event updated')
 def incident_created(sender, instance, **kwargs):
-    return instance, instance.concerned_business_lines, None
+    return instance, instance.concerned_business_lines
 
