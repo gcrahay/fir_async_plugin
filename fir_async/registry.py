@@ -47,7 +47,7 @@ registry.register_method(XmppMethod())
 def async_event(event, signal, model, verbose_name=None):
     def decorator_func(func):
         def wrapper_func(*args, **kwargs):
-            instance, business_lines, extra = func(*args, **kwargs)
+            instance, business_lines = func(*args, **kwargs)
             if instance is None:
                 return instance, business_lines
             if isinstance(business_lines, BusinessLine):
