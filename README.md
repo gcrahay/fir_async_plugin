@@ -61,7 +61,7 @@ Plugin notifications:
 
 ## Celery
 
-In your `dev/production.py` settings file, configure Celery parameters (CELERY_*). Follow the [official documentation](http://docs.celeryproject.org).
+`fir_async` uses the core FIR plugin `fir_celery`.
 
 ## Full URL in notification links
 
@@ -106,6 +106,21 @@ ASYNC_XMPP_PORT = 5222
 ## Templates
 
 You have to create notification templates in the Django admin site.
+
+To render notifications, each notification method can use the fields `subject`, `description` or `short_description`:
+
+- Email uses `subject` and `description`.
+- XMPP uses `subject` and `short_description`.
+
+# Adding notification method
+
+You have to create a subclass of `NotificationMethod` from `fir_async.methods` and implement at least the `send` method. You can then register your method with `fir_async.registry.registry.register_method`.
+
+If your configuration method needs some additional user defined settings, you have to list them in the class property `options`. See `EmailMethod` and `XmppMethod` for details. 
+
+# Adding notification event
+
+Us the `@async_event` decorator defined in `fir_async.registry` to decorate a classic Django signal handler function. This handler must return a tuple with an instance of the notification subject and a queryset of the concerned business lines.
 
 
 
