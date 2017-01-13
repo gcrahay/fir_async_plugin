@@ -22,6 +22,8 @@ class NotificationPreferenceFormset(forms.BaseInlineFormSet):
         super(NotificationPreferenceFormset, self).__init__(*args, **kwargs)
 
     def _construct_form(self, i, **kwargs):
+        method = None
+        event = None
         if self.is_bound and i < self.initial_form_count():
             pk_key = "%s-%s" % (self.add_prefix(i), self.model._meta.pk.name)
             pk = self.data[pk_key]
@@ -39,7 +41,7 @@ class NotificationPreferenceFormset(forms.BaseInlineFormSet):
             event = notification['verbose_event']
             method = notification['verbose_method']
             kwargs['instance'] = self.get_queryset()[i]
-        if i >= self.initial_form_count() and self.initial_extra:
+        if i >= self.initial_form_count() and self.notifications:
             # Set initial values for extra forms
             try:
                 key, initial = self.notifications.popitem()
